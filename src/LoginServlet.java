@@ -40,7 +40,6 @@ public class LoginServlet extends HttpServlet
 				request.getRequestDispatcher("login.jsp").forward(request, response);
 			else
 				response.sendRedirect(request.getContextPath() + "/main");
-				//request.getRequestDispatcher("/main").forward(request, response);
 		} catch (Exception e) {
 			System.out.println(e);
 		}
@@ -65,8 +64,7 @@ public class LoginServlet extends HttpServlet
         	parser.parse(jb.toString());
         	JsonObject rootObject = parser.parse(jb.toString()).getAsJsonObject();
         	
-        	response.setContentType("application/json");
-        	response.setCharacterEncoding("utf-8");
+        	response.setContentType("application/json;charset=UTF-8");
             PrintWriter out = response.getWriter();
 			
 			String login = rootObject.get("login").getAsString();

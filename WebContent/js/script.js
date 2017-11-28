@@ -62,7 +62,6 @@ function loginUser()
 	user.password = document.getElementById('password').value;
 	var handler = function(Request)
 				  {
-						console.log(Request);
 						ans = Request.response;
 						if(ans == 'success')
 							window.location.href = 'main';

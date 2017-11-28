@@ -16,13 +16,13 @@ public class SessionClass
 		String login = new String(), password = new String();
 
 		if(cookies != null)
-		for(int i = 0; i<cookies.length; ++i)
-		{
-			if(cookies[i].getName().equals("login"))
-				login = cookies[i].getValue();
-			if(cookies[i].getName().equals("password"))
-				password = cookies[i].getValue();
-		}
+			for(int i = 0; i<cookies.length; ++i)
+			{
+				if(cookies[i].getName().equals("login"))
+					login = cookies[i].getValue();
+				if(cookies[i].getName().equals("password"))
+					password = cookies[i].getValue();
+			}
 		
 		return MySQLClass.checkUser(login, password);
 	}
@@ -44,10 +44,11 @@ public class SessionClass
 	{
 		Cookie[] cookies = request.getCookies();
 		
-		for(int i = 0; i<cookies.length; ++i)
-		{
-			cookies[i].setMaxAge(0);
-			response.addCookie(cookies[i]);
-		}
+		if(cookies != null)
+			for(int i = 0; i<cookies.length; ++i)
+			{
+				cookies[i].setMaxAge(0);
+				response.addCookie(cookies[i]);
+			}
 	}
 }

@@ -32,7 +32,7 @@ public class SignServlet extends HttpServlet
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-        response.setContentType("text/html");
+        response.setContentType("text/html;charset=UTF-8");
 		
 		try 
 		{
@@ -40,7 +40,6 @@ public class SignServlet extends HttpServlet
 				request.getRequestDispatcher("sign.jsp").forward(request, response);
 			else
 				response.sendRedirect(request.getContextPath() + "/main");
-				//request.getRequestDispatcher("/main").forward(request, response);
 		} catch (Exception e) {
 			System.out.println(e);
 		}
@@ -72,7 +71,7 @@ public class SignServlet extends HttpServlet
 			String password = rootObject.get("password").getAsString();
 			String email = rootObject.get("email").getAsString();
 
-			if(MySQLClass.addUser(login, password, email))
+			if(!MySQLClass.addUser(login, password, email))
 				out.print("error");
 			else
 				out.print("success");
