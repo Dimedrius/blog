@@ -14,7 +14,8 @@ public class SessionClass
 	{
 		Cookie[] cookies = request.getCookies();
 		String login = new String(), password = new String();
-		
+
+		if(cookies != null)
 		for(int i = 0; i<cookies.length; ++i)
 		{
 			if(cookies[i].getName().equals("login"))

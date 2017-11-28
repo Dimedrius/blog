@@ -127,9 +127,10 @@ public class MainServlet extends HttpServlet
             	body = rootObject.get("body").getAsString();
             	tags = rootObject.get("tags").getAsString();
             	
-        		for(int i = 0; i<cookies.length; ++i)
-        			if(cookies[i].getName().equals("uid"))
-        				uid = Integer.parseInt(cookies[i].getValue());
+            	if(cookies != null)
+            		for(int i = 0; i<cookies.length; ++i)
+            			if(cookies[i].getName().equals("uid"))
+            				uid = Integer.parseInt(cookies[i].getValue());
         		MySQLClass.addPost(title, body, tags, uid);
             	break;
             case 5:
@@ -138,9 +139,10 @@ public class MainServlet extends HttpServlet
             	tags = rootObject.get("tags").getAsString();
             	pid = rootObject.get("pid").getAsInt();
             	
-        		for(int i = 0; i<cookies.length; ++i)
-        			if(cookies[i].getName().equals("uid"))
-        				uid = Integer.parseInt(cookies[i].getValue());
+            	if(cookies != null)
+            		for(int i = 0; i<cookies.length; ++i)
+            			if(cookies[i].getName().equals("uid"))
+            				uid = Integer.parseInt(cookies[i].getValue());
         		if(uid == MySQLClass.getUid(pid))
         			MySQLClass.editPost(title, body, tags, pid);
             	break;
@@ -156,9 +158,10 @@ public class MainServlet extends HttpServlet
             case 7:
             	pid = rootObject.get("pid").getAsInt();
             	
-        		for(int i = 0; i<cookies.length; ++i)
-        			if(cookies[i].getName().equals("uid"))
-        				uid = Integer.parseInt(cookies[i].getValue());
+            	if(cookies != null)
+            		for(int i = 0; i<cookies.length; ++i)
+            			if(cookies[i].getName().equals("uid"))
+            				uid = Integer.parseInt(cookies[i].getValue());
         		if(uid == MySQLClass.getUid(pid))
         			MySQLClass.deletePost(pid);
             	break;
@@ -166,9 +169,10 @@ public class MainServlet extends HttpServlet
             	cid = rootObject.get("cid").getAsInt();
             	pid = rootObject.get("pid").getAsInt();
             	
-        		for(int i = 0; i<cookies.length; ++i)
-        			if(cookies[i].getName().equals("uid"))
-        				uid = Integer.parseInt(cookies[i].getValue());
+            	if(cookies != null)
+            		for(int i = 0; i<cookies.length; ++i)
+            			if(cookies[i].getName().equals("uid"))
+            				uid = Integer.parseInt(cookies[i].getValue());
         		if(uid == MySQLClass.getUid(pid))
         			MySQLClass.deleteComment(cid);
             	break;
