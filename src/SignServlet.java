@@ -73,9 +73,9 @@ public class SignServlet extends HttpServlet
 			String email = rootObject.get("email").getAsString();
 
 			if(MySQLClass.addUser(login, password, email))
-				out.println("error");
+				out.print("error");
 			else
-				out.println("success");
+				out.print("success");
         } catch (Exception e) {
             System.out.println(e.toString());
         }
